@@ -5,8 +5,10 @@ CFLAGS = -Wall -Werror -Wextra -g
 SRC_DIR = src
 SRC_FILES = parsing/check_args.c \
 		parsing/validate_args.c \
-		is_valid_number.c \
-		ft_atoi.c \
+		utils/is_valid_number.c \
+		utils/ft_atoi_error.c \
+		utils/ft_atoi.c \
+		philo_life.c \
 		main.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -32,7 +34,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "\033[37mFclean done. 🕺\033[0m"
+	@echo "\033[37mFclean done.\033[0m"
 
 re: fclean all
 

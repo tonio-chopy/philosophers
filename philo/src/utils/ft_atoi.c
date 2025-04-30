@@ -5,49 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 19:11:44 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/23 22:08:38 by alaualik         ###   ########.fr       */
+/*   Created: 2025/04/25 17:33:36 by alaualik          #+#    #+#             */
+/*   Updated: 2025/04/25 17:34:10 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../../philo.h"
 
-int	ft_isspace(int c)
+int	ft_atoi(const char *nptr)
 {
-	return (c == ' ' || (c >= '\t' && c <= '\r'));
-}
+	int	sign;
+	int	result;
+	int	i;
 
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	ft_atoi(const char *str, int *error)
-{
-	long	res;
-	int		sign;
-	int		i;
-
-	res = 0;
-	sign = 1;
 	i = 0;
-	*error = 0;
-	while (ft_isspace(str[i]))
+	result = 0;
+	sign = 1;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (str[i] == '-')
-			sign = -1;
+		if (nptr[i] == '-')
+			sign = sign * (-1);
 		i++;
 	}
-	if (!ft_isdigit(str[i]))
-		*error = 1;
-	while (ft_isdigit(str[i]))
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		res = res * 10 + (str[i++] - '0');
-		if ((sign == 1 && res > INT_MAX)
-			|| (sign == -1 && res > (long)INT_MAX + 1))
-			*error = 1;
+		result = result * 10 + (nptr[i] - 48);
+		i++;
 	}
-	return ((int)(res * sign));
+	return (result * sign);
 }

@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_number.c                                  :+:      :+:    :+:   */
+/*   philo_life.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 20:18:39 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/23 21:59:41 by alaualik         ###   ########.fr       */
+/*   Created: 2025/04/25 17:27:35 by alaualik          #+#    #+#             */
+/*   Updated: 2025/04/26 16:36:11 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+#include <sys/time.h>
 
-int	is_valid_number(const char *str)
+void	*philo_life(void *arg)
 {
-	int	i;
+	t_philo	*philo;
 
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\f' || str[i] == 'v')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	if (str[i] < '0' || str[i] > '9')
-		return (0);
-	while (str[i] >= '0' && str[i] <= '9')
-		i++;
-	return (str[i] == '\0');
+	philo =(t_philo *)arg;
+	printf("philo %d is thinking...\n", philo->id);
+	usleep(philo->time_to_eat * 1000);
+	printf("philo %d is eating...\n", philo->id);
+	usleep(philo->time_to_sleep * 1000);
+	printf("philo %d is sleeping...\n", philo->id);
+	return (NULL);
 }
