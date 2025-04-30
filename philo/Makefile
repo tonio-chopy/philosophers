@@ -1,6 +1,6 @@
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g 
+CFLAGS = -pthread -Wall -Werror -Wextra -g 
 
 SRC_DIR = src
 SRC_FILES = parsing/check_args.c \

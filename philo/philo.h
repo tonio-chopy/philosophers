@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:13:25 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/30 10:06:59 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:48:18 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <unistd.h>
+
+# define YELLOW "\e[33m"
+# define NC "\e[0m"
+# define BYELLOW "\e[1;33m"
 
 typedef struct s_philo
 {
