@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:13:25 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/30 09:26:02 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:06:59 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,25 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-typedef struct	s_philo
+typedef struct s_philo
 {
-	int	id;
-	int	nb_philo;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	nb_times_to_eat;
+	int				id;
+	int				nb_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				nb_times_to_eat;
 	pthread_mutex_t	*forks;
 }	t_philo;
 
 // utils
-int		ft_error(char *message);
-int		ft_free_and_exit(pthread_t *philo, t_philo *philo_data, char *message);
-void	ft_free(pthread_t *philo, t_philo *philo_data);
-int		ft_validate_args(char **av);
-int		ft_is_valid_number(char *str);
+int				ft_error(char *message);
+int				ft_free_and_exit(pthread_t *philo,
+					t_philo *philo_data, char *message);
+void			ft_free(pthread_t *philo, t_philo *philo_data);
+int				ft_validate_args(char **av);
+int				ft_is_valid_number(char *str);
+unsigned long	get_current_time(void);
 
 // a trier
 int				ft_atoi_error(const char *str, int *error);

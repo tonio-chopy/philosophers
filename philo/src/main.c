@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:09:11 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/26 18:05:05 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:10:09 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	main(int ac, char **av)
 	while (i < nb_philo)
 	{
 		if (pthread_create(&philo[i], NULL, philo_life, &philo_data[i]) != 0)
-			return (ft_free_and_exit(philo, philo_data, "Error: Thread creation failed\n"));
+			return (ft_free_and_exit(philo,
+					philo_data, "Error: Thread creation failed\n"));
 		i++;
 	}
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 21:28:07 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/26 17:09:31 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/04/30 09:58:11 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ unsigned long	get_current_time(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-    return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }

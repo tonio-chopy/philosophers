@@ -8,6 +8,7 @@ SRC_FILES = parsing/check_args.c \
 		utils/is_valid_number.c \
 		utils/ft_atoi_error.c \
 		utils/ft_atoi.c \
+		utils/utils.c \
 		philo_life.c \
 		main.c
 

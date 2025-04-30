@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:03:33 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/26 17:22:49 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/04/30 09:55:14 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,28 @@ void	ft_free(pthread_t *philo, t_philo *philo_data)
 
 int	ft_validate_args(char **av)
 {
-    int	i;
+	int	i;
 
-    i = 1;
-    while (av[i])
-    {
-        if (!ft_is_valid_number(av[i]))
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 1;
+	while (av[i])
+	{
+		if (!ft_is_valid_number(av[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	ft_is_valid_number(char *str)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] < '0' || str[i] > '9')
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
