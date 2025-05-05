@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:13:25 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/30 10:48:18 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/05/05 20:33:59 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ typedef struct s_philo
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nb_times_to_eat;
+	unsigned long	start_time;
+	unsigned long	last_meal;
+	int				meals_eaten;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	*print_mutex;
 }	t_philo;
 
-// utils
 int				ft_error(char *message);
 int				ft_free_and_exit(pthread_t *philo,
 					t_philo *philo_data, char *message);
@@ -44,13 +47,11 @@ int				ft_validate_args(char **av);
 int				ft_is_valid_number(char *str);
 unsigned long	get_current_time(void);
 
-// a trier
 int				ft_atoi_error(const char *str, int *error);
 int				ft_atoi(const char *nptr);
 int				is_valid_number(const char *str);
 void			*philo_life(void *arg);
 int				ft_isdigit(int c);
-unsigned long	get_current_time(void);
 int				ft_isspace(int c);
 int				check_args(char *arg);
 int				validate_argument(char *arg, int arg_num);

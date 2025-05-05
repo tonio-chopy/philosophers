@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:03:33 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/30 09:55:14 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/05/05 19:52:10 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ int	ft_free_and_exit(pthread_t *philo, t_philo *philo_data, char *message)
 
 void	ft_free(pthread_t *philo, t_philo *philo_data)
 {
-	if (philo)
-		free(philo);
-	if (philo_data)
-		free(philo_data);
+	free(philo);
+	free(philo_data);
 }
 
 int	ft_validate_args(char **av)

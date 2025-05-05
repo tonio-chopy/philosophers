@@ -3,8 +3,7 @@ CC = cc
 CFLAGS = -pthread -Wall -Werror -Wextra -g 
 
 SRC_DIR = src
-SRC_FILES = parsing/check_args.c \
-		parsing/validate_args.c \
+SRC_FILES = parsing/validate_args.c \
 		utils/is_valid_number.c \
 		utils/ft_atoi_error.c \
 		utils/ft_atoi.c \
