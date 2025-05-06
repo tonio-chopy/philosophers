@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:13:25 by alaualik          #+#    #+#             */
-/*   Updated: 2025/05/05 20:33:59 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:02:35 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ typedef struct s_philo
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	*print_mutex;
 }	t_philo;
+
+typedef struct s_main
+{
+	int				i;
+	int				nb_philo;
+	pthread_t		*philo;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	print_mutex;
+	int				all_done;
+	unsigned long	start_time;
+}	t_main;
 
 int				ft_error(char *message);
 int				ft_free_and_exit(pthread_t *philo,
