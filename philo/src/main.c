@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:09:11 by alaualik          #+#    #+#             */
-/*   Updated: 2025/05/06 20:02:26 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:05:38 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,8 @@ void	print_example(void)
 
 int	main(int ac, char **av)
 {
-	int				i;
-	int				nb_philo;
-	pthread_t		*philo;
 	t_main			*main;
 	t_philo			*philo_data;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	print_mutex;
-	int				all_done;
-	unsigned long	start_time;
 
 	if (ac != 5 && ac != 6)
 	{
