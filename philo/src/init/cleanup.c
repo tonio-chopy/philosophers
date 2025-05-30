@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 21:26:07 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/23 21:56:47 by alaualik         ###   ########.fr       */
+/*   Created: 2025/05/22 12:25:49 by alaualik          #+#    #+#             */
+/*   Updated: 2025/05/22 12:25:57 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-int	check_args(char *arg)
+void	destroy_mutexes(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	while (ft_isspace(arg[i]))
+	while (i < data->nb_philo)
+	{
+		pthread_mutex_destroy(&data->forks[i]);
 		i++;
-	if (arg[i] == '+' || arg[i] == '-')
-		i++;
-	if (!ft_isdigit(arg[i]))
-		return (0);
-	while (ft_isdigit(arg[i]))
-		i++;
-	while (ft_isspace(arg[i]))
-		i++;
-	return (arg[i] == '\0');
+	}
+	pthread_mutex_destroy(&data->print_mutex);
+	pthread_mutex_destroy(&data->death_mutex);
+}
+
+void	cleanup_data(t_data *data)
+{
+	if (data->forks)
+	{
+		destroy_mutexes(data);
+		free(data->forks);
+	}
+	if (data->philos)
+		free(data->philos);
+	if (data->threads)
+		free(data->threads);
 }
