@@ -6,8 +6,13 @@ SRC_DIR = src
 SRC_FILES = parsing/validate_args.c \
 		utils/is_valid_number.c \
 		utils/ft_atoi_error.c \
-		utils/ft_atoi.c \
 		utils/utils.c \
+		init/init.c \
+		init/cleanup.c \
+		init/monitor.c \
+		init/threads.c \
+		philo_utils.c \
+		philo_actions.c \
 		philo_life.c \
 		main.c
 

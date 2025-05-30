@@ -6,7 +6,7 @@
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:03:33 by alaualik          #+#    #+#             */
-/*   Updated: 2025/05/05 19:52:10 by alaualik         ###   ########.fr       */
+/*   Updated: 2025/05/30 11:03:31 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,45 +18,27 @@ int	ft_error(char *message)
 	return (1);
 }
 
-int	ft_free_and_exit(pthread_t *philo, t_philo *philo_data, char *message)
+void	safe_usleep(unsigned long duration, t_data *data)
 {
-	if (philo)
-		free(philo);
-	if (philo_data)
-		free(philo_data);
-	return (ft_error(message));
-}
+	unsigned long	start;
+	unsigned long	now;
 
-void	ft_free(pthread_t *philo, t_philo *philo_data)
-{
-	free(philo);
-	free(philo_data);
-}
-
-int	ft_validate_args(char **av)
-{
-	int	i;
-
-	i = 1;
-	while (av[i])
+	start = get_current_time();
+	now = start;
+	while (!data->simulation_end && now - start < duration)
 	{
-		if (!ft_is_valid_number(av[i]))
-			return (0);
-		i++;
+		usleep(10);
+		now = get_current_time();
 	}
-	return (1);
 }
 
-int	ft_is_valid_number(char *str)
+int	safe_mutex_lock(pthread_mutex_t *mutex, t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	while (!data->simulation_end)
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
+		if (pthread_mutex_trylock(mutex) == 0)
+			return (1);
+		usleep(10);
 	}
-	return (1);
+	return (0);
 }
