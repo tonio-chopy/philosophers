@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 17:33:36 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/25 17:34:10 by alaualik         ###   ########.fr       */
+/*   Created: 2025/05/30 17:33:11 by alaualik          #+#    #+#             */
+/*   Updated: 2025/05/30 17:33:13 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#ifndef MACROS_H
+# define MACROS_H
 
-int	ft_atoi(const char *nptr)
-{
-	int	sign;
-	int	result;
-	int	i;
-
-	i = 0;
-	result = 0;
-	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			sign = sign * (-1);
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = result * 10 + (nptr[i] - 48);
-		i++;
-	}
-	return (result * sign);
-}
+# define TRUE 1
+# define FALSE 0
+# define NB_THREAD 10
+# define WRONG_ARG -1
+# define TIME_TO_EAT_TOO_LONG -2
+# define YELLOW "\033[33m"
+# define NO_COLOR "\033[0m"
+#endif

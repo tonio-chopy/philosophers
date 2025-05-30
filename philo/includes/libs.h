@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_number.c                                  :+:      :+:    :+:   */
+/*   libs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaualik <alaualik@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 20:18:39 by alaualik          #+#    #+#             */
-/*   Updated: 2025/04/26 15:14:23 by alaualik         ###   ########.fr       */
+/*   Created: 2025/05/30 17:33:02 by alaualik          #+#    #+#             */
+/*   Updated: 2025/05/30 17:33:04 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#ifndef LIBS_H
+# define LIBS_H
 
-int	is_valid_number(const char *str)
-{
-	int	i;
+# include <pthread.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/time.h>
+# include <unistd.h>
+# include <limits.h>
+# include "macros.h"
+# include "structs.h"
 
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\f')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	if (str[i] < '0' || str[i] > '9')
-		return (0);
-	while (str[i] >= '0' && str[i] <= '9')
-		i++;
-	return (str[i] == '\0');
-}
+#endif

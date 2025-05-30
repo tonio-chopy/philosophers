@@ -1,41 +1,42 @@
-NAME = philo
-CC = cc
-CFLAGS = -pthread -Wall -Werror -Wextra -g 
+NAME				=	philo
 
-SRC_DIR = src
-SRC_FILES = parsing/validate_args.c \
-		utils/is_valid_number.c \
-		utils/ft_atoi_error.c \
-		utils/ft_atoi.c \
-		utils/utils.c \
-		philo_life.c \
-		main.c
+FILES				=	main.c \
+						utils.c \
+						parsing.c \
+						init.c \
+						life.c \
+						watcher.c \
 
-SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-    
-OBJ_DIR = obj
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+SRC_DIR				=	src
+SRC					=	$(addprefix $(SRC_DIR)/, $(SRC))
 
-all: $(NAME)
+OBJ_DIR				=	obj
+OBJ					=	$(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
-$(NAME): $(OBJ_DIR) $(OBJ)
-	@$(CC) -o $(NAME) $(OBJ)
+CC					=	cc
+CFLAGS				=	-Wall -Wextra -Werror
+INCLUDES			=	-I includes
+DEBUGGER			=	-g3
 
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
-    
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
+all					:	$(NAME)
 
-clean:
-	@rm -rf $(OBJ_DIR)
-	@echo "\033[37mClean done.\033[0m"
 
-fclean: clean
-	@rm -f $(NAME)
-	@echo "\033[37mFclean done.\033[0m"
+$(NAME)				:	$(OBJ_DIR) $(OBJ)
+						$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) -o $(NAME)
+						@echo "philo compiled.\n"
 
-re: fclean all
+$(OBJ_DIR)			:
+						mkdir -p $@
 
-.PHONY: all clean fclean re
+$(OBJ_DIR)/%.o		:	$(SRC_DIR)/%.c
+						$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+clean				:
+						rm -rf $(OBJ_DIR)
+
+fclean				:	clean
+						rm -rf $(NAME)
+
+re					:	fclean all
+
+.PHONY				:	all clean fclean re
